@@ -55,8 +55,8 @@
         <br />
         <input id="btnequals" style="width: 294px" type="Button" value="  =  " onclick="Operation('=')">
     </form>
-    <form action="extra.html">
-        <button>Scientific Mode (WIP)</button>
+    <form action="index.html">
+        <button>Basic Mode</button>
     </form>
     <script>
         function helloWorld() {
@@ -70,7 +70,6 @@
         var FlagNewNum = false; // To check whether the number is new number
         var PendingOp = ""; // to store the pending operation
         var output = document.getElementById('output')
-        var decFlag = false // to determine whether decimal should be 0. or append
 
         function NumPressed(Num) {
             // If number button is pressed, show number on the screen
@@ -83,8 +82,6 @@
             }else{
                 output.value += Num
             }
-
-            if(PendingOp) decFlag = true
         }
 
         function Operation(Op) {
@@ -129,16 +126,16 @@
 
             if(!output.value.includes('.')){
                 output.value += '.'
-                FlagNewNum = false  
+                FlagNewNum = false
+            }else{
+
             }
 
-             if(!decFlag){
+            if(PendingOp){
                 output.value = '0.'
                 FlagNewNum = false
             }
 
-            console.log(output.value)
-            console.log(Accumulate)
         }
 
         function Clear() {
@@ -146,7 +143,6 @@
             output.value = 0
             Accumulate = 0
             PendingOp = ''
-            FlagNewNum = true
             console.log('Cleared')
         }
     </script>
